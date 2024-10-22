@@ -80,12 +80,10 @@ LIMIT 1;
 ¿Cuál es el promedio de personas inscritas por día? Toma en consideración que la
 base de datos tiene un registro de 8 días, es decir, se obtendrán 8 promedios.
 */
-SELECT AVG(total) AS promedio_incritos FROM (
-SELECT fecha, SUM(cantidad) AS total 
+SELECT fecha, ROUND(AVG(cantidad), 2) AS total 
 FROM inscritos 
 GROUP BY fecha
-);
-
+ORDER BY fecha;
 
 -- ¿Qué días se inscribieron más de 50 personas?
 SELECT fecha, SUM(cantidad) as total FROM inscritos 
